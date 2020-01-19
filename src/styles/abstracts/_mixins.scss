@@ -1,0 +1,185 @@
+// Opacity
+@mixin opacity($value) {
+  opacity: $value;
+  -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity='+ (
+      $value * 100
+    )+')';
+  filter: alpha(opacity=$value * 100);
+}
+
+// Backface Visibility
+@mixin backface-visibility($property) {
+  backface-visibility: $property;
+  -webkit-backface-visibility: $property;
+  -moz-backface-visibility: $property;
+}
+
+// Background Size
+@mixin background-size($property) {
+  background-size: $property;
+  -webkit-background-size: $property;
+  -moz-background-size: $property;
+  -o-background-size: $property;
+}
+
+// Border Radius
+@mixin border-radius($property) {
+  border-radius: $property;
+  -webkit-border-radius: $property;
+  -moz-border-radius: $property;
+  -o-border-radius: $property;
+}
+
+// Box Shadow
+@mixin box-shadow($property) {
+  box-shadow: $property;
+  -webkit-box-shadow: $property;
+  -moz-box-shadow: $property;
+  -o-box-shadow: $property;
+}
+
+// Appearance
+@mixin appearance($property) {
+  appearance: $property;
+  -webkit-appearance: $property;
+  -moz-appearance: $property;
+  -o-appearance: $property;
+}
+
+// Truncate
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Pseudo
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+// Responsive Ratio
+@mixin responsive-ratio($x, $y, $pseudo: false) {
+  $padding: unquote(($y / $x) * 100 + '%');
+
+  @if $pseudo {
+    &::before {
+      width: 100%;
+      padding-top: $padding;
+
+      @include pseudo($pos: relative);
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
+
+// Font Face
+@mixin font-face(
+  $name,
+  $path,
+  $weight: null,
+  $style: null,
+  $exts: eot woff2 woff ttf svg
+) {
+  $src: null;
+
+  $extmods: (
+    eot: '?',
+    svg: '#' + str-replace($name, ' ', '_')
+  );
+
+  $formats: (
+    otf: 'opentype',
+    ttf: 'truetype'
+  );
+
+  @each $ext in $exts {
+    $extmod: if(
+      map-has-key($extmods, $ext),
+      $ext + map-get($extmods, $ext),
+      $ext
+    );
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append(
+      $src,
+      url(quote($path + '.' + $extmod)) format(quote($format)),
+      comma
+    );
+  }
+
+  @font-face {
+    font-family: quote($name);
+    font-style: $style;
+    font-weight: $weight;
+    font-display: swap;
+    src: $src;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+// Placeholder
+@mixin input-placeholder {
+  &.placeholder,
+  &::-moz-placeholder,
+  &::-ms-input-placeholder,
+  &::-webkit-input-placeholde {
+    @content;
+  }
+}
+
+// Transitions
+@mixin transition($transition) {
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+
+@mixin transition-property($property) {
+  -moz-transition-property: $property;
+  -o-transition-property: $property;
+  -webkit-transition-property: $property;
+  transition-property: $property;
+}
+
+@mixin transition-duration($duration) {
+  -moz-transition-property: $duration;
+  -o-transition-property: $duration;
+  -webkit-transition-property: $duration;
+  transition-property: $duration;
+}
+
+@mixin transition-timing-function($timing) {
+  -moz-transition-timing-function: $timing;
+  -o-transition-timing-function: $timing;
+  -webkit-transition-timing-function: $timing;
+  transition-timing-function: $timing;
+}
+
+@mixin transition-delay($delay) {
+  -moz-transition-delay: $delay;
+  -o-transition-delay: $delay;
+  -webkit-transition-delay: $delay;
+  transition-delay: $delay;
+}
+
+// Transform
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+// Transform Origin
+@mixin transform-origin($transform) {
+  -webkit-transform-origin: $transform;
+  -moz-transform-origin: $transform;
+  -o-transform-origin: $transform;
+  transform-origin: $transform;
+}

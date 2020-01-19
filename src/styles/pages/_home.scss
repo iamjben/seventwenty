@@ -1,0 +1,108 @@
+.banner {
+  $this: &;
+
+  @include media('<=lg') {
+    height: 720px;
+  }
+
+  @include media('<=md') {
+    height: auto;
+    padding-bottom: 5rem;
+  }
+
+  @include background-size(cover);
+
+  background-image: url($imagePath+'img_header.jpg');
+  background-repeat: no-repeat;
+  position: relative;
+  height: 850px;
+
+  .navigation {
+    border-bottom: none;
+    background-color: transparent;
+
+    .navbar-nav .nav-link {
+      color: #ffffff;
+    }
+  }
+
+  &__content {
+    @include media('<=lg') {
+      margin-top: 50px;
+    }
+
+    @include media('<=md') {
+      margin-top: 0;
+      text-align: center;
+    }
+
+    margin-top: 120px;
+  }
+
+  &__title,
+  &__description {
+    color: #ffffff;
+  }
+
+  &__title {
+    @include media('<=lg') {
+      font-size: 2.2rem;
+    }
+
+    font-size: 2.7rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  &__description {
+    margin-bottom: 1.8rem !important;
+  }
+}
+
+.section {
+  position: relative;
+  padding: 4.5rem 0;
+
+  &__title {
+    @include media('<=lg') {
+      font-size: 2.2rem;
+      text-align: center !important;
+    }
+
+    text-align: center;
+    font-size: 2.7rem;
+    margin-top: 0;
+  }
+
+  &--one {
+    background-color: #fafafa;
+  }
+
+  &--two {
+    background-color: #f7fdff;
+  }
+
+  &--three,
+  &--four {
+    @include background-size(cover);
+
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &--three {
+    background-image: url($imagePath+'img_bg.jpg');
+  }
+
+  &--four {
+    @include media('<=lg') {
+      text-align: center;
+    }
+
+    background-image: url($imagePath+'img_whyyoushould.jpg');
+  }
+
+  &--five {
+    background-color: #004f7b;
+  }
+}

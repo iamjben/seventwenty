@@ -1,0 +1,59 @@
+$primary: #0a3750;
+$secondary: #51b7eb;
+
+$imagePath: '../src/images/';
+$fontPath: '../src/fonts/';
+
+// Include Media - Override
+// $breakpoints: (
+//   'xs': 480px,
+//   'sm': 576px,
+//   'md': 768px,
+//   'lg': 992px,
+//   'xl': 1200px
+// );
+
+// Bootstrap - Override
+// See https://getbootstrap.com/docs/4.0/getting-started/theming/
+
+// $container-max-widths: (
+//   xl: 1400px
+// );
+
+// $theme-colors: (
+//   "primary": #0074d9,
+//   "danger": #ff4136
+// );
+
+// Libraries
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/include-media/dist/include-media';
+@import 'node_modules/hamburgers/_sass/hamburgers/hamburgers';
+
+// Abstracts
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+
+// Base
+@import 'base/reset';
+@import 'base/typography';
+
+// Components
+// @import component styles
+
+// Layout
+@import 'layout/base';
+@import 'layout/footer';
+@import 'layout/header';
+@import 'layout/navigation';
+@import 'layout/sidebar';
+
+// Pages
+@import 'pages/home';
+@import 'pages/404';
+
+// Themes
+// @import theme styles
+
+// Vendors
+// @import Vvndor styles
