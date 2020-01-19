@@ -31,4 +31,4 @@ include_once 'inc/utilities/wp-bootstrap-nav-walker.php';
  * 
  * Include your custom functions
  */
-include_once 'custom-functions.php';
+include_once 'inc/custom-functions.php';
